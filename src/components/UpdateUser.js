@@ -4,7 +4,7 @@ import './FormUser.css';
 
 function UpdateUser() {
     const { id } = useParams(); // Obtém o ID da URL
-    const [user, setUser] = useState(null); // Estado para armazenar os dados do usuário
+    const [user, setUser] = useState(); // Estado para armazenar os dados do usuário
     const [name, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
