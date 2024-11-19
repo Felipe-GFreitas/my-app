@@ -1,47 +1,23 @@
+// UpdateProduto.js
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './FormUser.css';
 
 function UpdateProduto() {
-    const { id } = useParams(); // Obtém o ID da URL
-    const [produto, setProduto] = useState(); // Estado para armazenar os dados do usuário
+    const { id } = useParams();
     const [nome, setNome] = useState('');
     const [preco, setPreco] = useState('');
     const [quantidade, setQuantidade] = useState('');
     const [user, setUser] = useState('');
 
-    useEffect(() => {
-        // Função para buscar os dados do usuário
-        const fetchProduto = async () => {
-            try {
-                const response = await fetch(`http://localhost:8081/produto/${id}`); 
-                if (response.ok) {
-                    const produtoData = await response.json();
-                    setProduto(produtoData);
-                    setNome(produtoData.nome);
-                    setPreco(produtoData.preco);
-                    setQuantidade(produtoData.quantidade);
-                    setUser(produtoData.user.id);
-                } else {
-                    alert("Erro ao buscar usuário");
-                }
-            } catch (error) {
-                console.error("Erro na requisição:", error);
-                alert("Erro na requisição");
-            }
-        };
-
-        fetchProduto(); // Chama a função para buscar os dados
-    }, [id]); 
-
     const updateProduto = async () => {
-        if (nome === "" || preco <= 0 || quantidade <= 0 || user <=0) {
-            alert("Preencha todos os campos");
+        if (nome === "" || preco <= 0 || quantidade <= 0 || user <= 0) {
+            alert("Preencha todos os campos corretamente");
             return;
         }
 
         try {
-            const response = await fetch(`http://localhost:8081/produto/${id}`, {
+            const response = await fetch(`http://localhost:8081/produto/update/${id}`, {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +32,6 @@ function UpdateProduto() {
 
             if (response.ok) {
                 alert("Produto atualizado com sucesso!");
-
             } else {
                 const errorData = await response.json();
                 alert("Erro ao atualizar produto: " + errorData.message);
