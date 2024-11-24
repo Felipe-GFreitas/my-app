@@ -10,6 +10,7 @@ import UpdateUser from './components/UpdateUser';
 import FormProduto from './components/FormProduto';
 import ListProduto from './components/ListProduto';
 import UpdateProduto from './components/UpdateProduto';
+import FormVendas from './components/FormVendas';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,9 +21,11 @@ root.render(
         <Route path='/create-user' element={<FormUser />} />
         <Route path='/list-user' element={<ListUser />} /> 
         <Route path='/update-user/:id' element={<UpdateUser />} />
-        <Route path='/cadastrar-produto' element={<FormProduto />} />
-        <Route path='/list-produto' element={<ListProduto />} /> 
+        <Route path='/produto' element={<FormProduto />} />
+        <Route path='/produto-listar' element={<ListProduto />} /> 
         <Route path='/update-produto/:id' element={<UpdateProduto />} />
+        <Route path='/vendas' element={<FormVendas />} />
+        
       
       </Routes>
     </BrowserRouter>
